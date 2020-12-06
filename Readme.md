@@ -1,7 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Endless Hatred](https://up.htmlacademy.ru/php/12/user/239126).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Петров](https://htmlacademy.ru/profile/id1231631).
 
 ---
 
