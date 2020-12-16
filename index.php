@@ -43,14 +43,15 @@ $promos_list = [
     ]
 ];
 
-function format_price($price) : string {
+function format_price($price) : string
+{
     $ceil_price = ceil($price);
 
     if ($ceil_price >= 1000) {
-        return number_format($ceil_price, 0, ' ', ' ');
+        return number_format($ceil_price, 0, ' ', ' ') . ' ₽';
     }
 
-    return strval($ceil_price);
+    return strval($ceil_price) . ' ₽';
 }
 ?>
 <!DOCTYPE html>
@@ -125,7 +126,7 @@ function format_price($price) : string {
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
-                                <span class="lot__cost"><?=format_price($promo_item['price']) ?? '' ?><b class="rub">р</b></span>
+                                <span class="lot__cost"><?=format_price($promo_item['price']) ?? '' ?></span>
                             </div>
                             <div class="lot__timer timer">
                                 12:23
