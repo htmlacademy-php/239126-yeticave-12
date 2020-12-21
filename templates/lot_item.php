@@ -3,7 +3,7 @@
         <img src="<?= $promo_item['url'] ?? '' ?>" width="350" height="260" alt="<?= esc($promo_item['name']) ?? '' ?>">
     </div>
     <div class="lot__info">
-        <span class="lot__category"><?= $promo_item['category'] ?? '' ?></span>
+        <span class="lot__category"><?= esc($promo_item['category']) ?? '' ?></span>
         <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?= esc($promo_item['name']) ?? ''?></a></h3>
         <div class="lot__state">
             <div class="lot__rate">
