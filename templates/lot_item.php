@@ -10,8 +10,8 @@
                 <span class="lot__amount">Стартовая цена</span>
                 <span class="lot__cost"><?=format_price(esc($promo_item['price'])) ?? '' ?></span>
             </div>
-            <div class="lot__timer timer">
-                12:23
+            <div class="lot__timer timer <?=is_timer_finishing($promo_item['expiry_date']); ?>">
+                <?=timer_counter($promo_item['expiry_date']); ?>
             </div>
         </div>
     </div>

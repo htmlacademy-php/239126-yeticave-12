@@ -14,3 +14,19 @@ function esc($str) : string
 {
     return htmlspecialchars($str);
 }
+
+function timer_counter($expiry_date) : string
+{
+    $diff = intval(strtotime($expiry_date) - time());
+
+    $hours = floor($diff / 3600);
+    $minutes = floor(($diff % 3600) / 60);
+
+    return str_pad($hours, 2, '0', STR_PAD_LEFT) . ':'
+        . str_pad($minutes, 2, '0', STR_PAD_LEFT);
+}
+
+function is_timer_finishing($expiry_date) : string
+{
+    return intval(timer_counter($expiry_date)) === 0 ? 'timer--finishing' : '';
+}
