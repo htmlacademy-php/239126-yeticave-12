@@ -34,6 +34,6 @@ function timer_counter($expiry_date) : array
 
 function is_hours_equals_zero($hours) : string
 {
-    return ($hours == 0) ? 'timer--finishing' : '';
+    return (intval($hours) === 0) ? 'timer--finishing' : '';
 }
 
