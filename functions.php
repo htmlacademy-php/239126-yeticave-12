@@ -21,7 +21,7 @@ function timer_counter($expiry_date) : array
     $hours = 0;
     $minutes = 0;
 
-    if ($diff->invert == 0) {
+    if ($diff->invert === 0) {
         $hours = $diff->days * 24 + $diff->h; // получаем разницу между датами в часах
         $minutes = $diff->i; // для общего стиля присваиваю остаток минут в переменную
     }
