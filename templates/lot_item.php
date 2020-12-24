@@ -17,7 +17,7 @@
                 <span class="lot__amount">Стартовая цена</span>
                 <span class="lot__cost"><?= format_price(esc($promo_item['price'])) ?? '' ?></span>
             </div>
-            <div class="lot__timer timer <?= is_hours_eq_zero($hours); ?>">
+            <div class="lot__timer timer <?= is_hours_equals_zero($hours); ?>">
                 <?= $hours . ':' . $minutes ?>
             </div>
         </div>
