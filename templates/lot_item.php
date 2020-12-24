@@ -1,3 +1,10 @@
+<?php
+/** @var $promo_item*/
+    $timer = timer_counter($promo_item['expiry_date']);
+    $hours = $timer['hours'] ?? '';
+    $minutes = $timer['minutes'] ?? '';
+?>
+
 <li class="lots__item lot">
     <div class="lot__image">
         <img src="<?= $promo_item['url'] ?? '' ?>" width="350" height="260" alt="<?= esc($promo_item['name']) ?? '' ?>">
@@ -8,10 +15,10 @@
         <div class="lot__state">
             <div class="lot__rate">
                 <span class="lot__amount">Стартовая цена</span>
-                <span class="lot__cost"><?=format_price(esc($promo_item['price'])) ?? '' ?></span>
+                <span class="lot__cost"><?= format_price(esc($promo_item['price'])) ?? '' ?></span>
             </div>
-            <div class="lot__timer timer <?=is_timer_finishing($promo_item['expiry_date']); ?>">
-                <?=timer_counter($promo_item['expiry_date']); ?>
+            <div class="lot__timer timer <?= is_timer_finishing($hours); ?>">
+                <?= $hours . ':' . $minutes ?>
             </div>
         </div>
     </div>

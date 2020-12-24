@@ -15,18 +15,25 @@ function esc($str) : string
     return htmlspecialchars($str);
 }
 
-function timer_counter($expiry_date) : string
+function timer_counter($expiry_date) : array
 {
-    $diff = intval(strtotime($expiry_date) - time());
+    $diff = date_diff(date_create('now'), date_create($expiry_date));
+    $hours = 0;
+    $minutes = 0;
 
-    $hours = floor($diff / 3600);
-    $minutes = floor(($diff % 3600) / 60);
+    if ($diff->invert == 0) {
+        $hours = $diff->days * 24 + $diff->h; // получаем разницу между датами в часах
+        $minutes = $diff->i; // для общего стиля присваиваю остаток минут в переменную
+    }
 
-    return str_pad($hours, 2, '0', STR_PAD_LEFT) . ':'
-        . str_pad($minutes, 2, '0', STR_PAD_LEFT);
+    return array(
+        'hours' => str_pad($hours, 2, '0', STR_PAD_LEFT),
+        'minutes' => str_pad($minutes, 2, '0', STR_PAD_LEFT)
+    );
 }
 
-function is_timer_finishing($expiry_date) : string
+function is_timer_finishing($hours) : string
 {
-    return intval(timer_counter($expiry_date)) === 0 ? 'timer--finishing' : '';
+    return ($hours == 0) ? 'timer--finishing' : '';
 }
+

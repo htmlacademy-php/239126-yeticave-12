@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * @var $categories
+ * @var $promos_list
+ * @var $is_auth
+ * @var $user_name
+ */
+
 require_once('data.php');
 require_once('functions.php');
 require_once('helpers.php');
