@@ -32,7 +32,7 @@ function timer_counter($expiry_date) : array
     );
 }
 
-function is_timer_finishing($hours) : string
+function is_hours_eq_zero($hours) : string
 {
     return ($hours == 0) ? 'timer--finishing' : '';
 }
