@@ -1,8 +1,8 @@
 <?php
 /** @var $promo_item*/
     $timer = timer_counter($promo_item['expiry_date']);
-    $hours = $timer['hours'] ?? '';
-    $minutes = $timer['minutes'] ?? '';
+    $hours = $timer['hours'] ?? '00';
+    $minutes = $timer['minutes'] ?? '00';
 ?>
 
 <li class="lots__item lot">
