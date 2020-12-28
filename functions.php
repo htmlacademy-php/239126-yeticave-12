@@ -17,12 +17,16 @@ function esc($str) : string
 
 function timer_counter($expiry_date) : array
 {
-    $diff = date_diff(date_create('now'), date_create($expiry_date));
+    $now = new DateTime();
+    $end_date = DateTime::createFromFormat('Y-m-d', $expiry_date);
+    $end_date->setTime(23,59);
+    $diff = $now->diff($end_date);
+
     $hours = 0;
     $minutes = 0;
 
     if ($diff->invert === 0) {
-        $hours = $diff->days * 24 + $diff->h; // получаем разницу между датами в часах
+        $hours = $diff->d * 24 + $diff->h; // получаем разницу между датами в часах
         $minutes = $diff->i; // для общего стиля присваиваю остаток минут в переменную
     }
 
