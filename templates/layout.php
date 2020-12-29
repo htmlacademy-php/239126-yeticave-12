@@ -1,3 +1,12 @@
+<?php
+/**
+ * @var $title
+ * @var $header_content
+ * @var $main_content
+ * @var $footer_content
+ */
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>

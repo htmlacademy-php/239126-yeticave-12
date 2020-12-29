@@ -14,3 +14,30 @@ function esc($str) : string
 {
     return htmlspecialchars($str);
 }
+
+function timer_counter($expiry_date) : array
+{
+    $now = new DateTime();
+    $end_date = DateTime::createFromFormat('Y-m-d', $expiry_date);
+    $end_date->setTime(23,59);
+    $diff = $now->diff($end_date);
+
+    $hours = 0;
+    $minutes = 0;
+
+    if ($diff->invert === 0) {
+        $hours = $diff->d * 24 + $diff->h; // получаем разницу между датами в часах
+        $minutes = $diff->i; // для общего стиля присваиваю остаток минут в переменную
+    }
+
+    return array(
+        'hours' => str_pad($hours, 2, '0', STR_PAD_LEFT),
+        'minutes' => str_pad($minutes, 2, '0', STR_PAD_LEFT)
+    );
+}
+
+function is_hours_equals_zero($hours) : string
+{
+    return (intval($hours) === 0) ? 'timer--finishing' : '';
+}
+
