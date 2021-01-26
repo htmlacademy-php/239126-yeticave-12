@@ -46,31 +46,6 @@ LOCK TABLES `bet` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `bets_list`
---
-
-DROP TABLE IF EXISTS `bets_list`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `bets_list` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `bet_id` int unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `bet_id_idx` (`bet_id`),
-  CONSTRAINT `bets_list_bet_id` FOREIGN KEY (`bet_id`) REFERENCES `bet` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `bets_list`
---
-
-LOCK TABLES `bets_list` WRITE;
-/*!40000 ALTER TABLE `bets_list` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bets_list` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `category`
 --
 
@@ -135,31 +110,6 @@ LOCK TABLES `lot` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `lots_list`
---
-
-DROP TABLE IF EXISTS `lots_list`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `lots_list` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `lot_item_id` int unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `lot_id_idx` (`lot_item_id`),
-  CONSTRAINT `lots_list_lot_id` FOREIGN KEY (`lot_item_id`) REFERENCES `lot` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `lots_list`
---
-
-LOCK TABLES `lots_list` WRITE;
-/*!40000 ALTER TABLE `lots_list` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lots_list` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user`
 --
 
@@ -173,15 +123,9 @@ CREATE TABLE `user` (
   `name` varchar(255) NOT NULL,
   `passwd` varchar(64) NOT NULL,
   `contact_info` varchar(512) NOT NULL,
-  `lots_id` int unsigned NOT NULL,
-  `bets_id` int unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `name_UNIQUE` (`name`),
-  KEY `lots_id_idx` (`lots_id`),
-  KEY `bets_id_idx` (`bets_id`),
-  CONSTRAINT `user_bets_id` FOREIGN KEY (`bets_id`) REFERENCES `bets_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `user_lots_id` FOREIGN KEY (`lots_id`) REFERENCES `lots_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -203,4 +147,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-23 21:35:32
+-- Dump completed on 2021-01-26 22:08:07
