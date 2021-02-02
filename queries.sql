@@ -64,13 +64,19 @@ SELECT lot.name, lot.starter_price, lot.img_src, bet.price as current_price, cat
         ON bet.lot_id = lot.id
     JOIN category
         ON lot.category_id = category.id
-        WHERE lot.winner_id is NULL;
+        WHERE lot.winner_id is NULL AND lot.date_creation > '2021-02-11';
         
 /* показать лот по его id. Получите также название категории, к которой принадлежит лот */
 
-SELECT lot.id, category.name FROM lot
-    JOIN category
-        ON lot.category_id = category.id;
+SELECT
+	lot.*,
+	category.name
+FROM
+	lot
+JOIN category ON
+	lot.category_id = category.id
+WHERE
+	lot.id = 3
         
 /* обновить название лота по его идентификатору; */
 UPDATE lot
