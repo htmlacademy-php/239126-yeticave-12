@@ -2,9 +2,9 @@
 $is_auth = rand(0, 1);
 
 $user_name = 'Иван Иванов';
-$categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
+//$categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
 
-$promos_list = [
+/* $promos_list = [
     [
         'name' => '2014 Rossignol District Snowboard',
         'category' => 'Доски и лыжи',
@@ -48,3 +48,4 @@ $promos_list = [
         'expiry_date' => '2021-01-03'
     ]
 ];
+*/

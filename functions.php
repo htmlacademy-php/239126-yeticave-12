@@ -18,7 +18,7 @@ function esc($str) : string
 function timer_counter($expiry_date) : array
 {
     $now = new DateTime();
-    $end_date = DateTime::createFromFormat('Y-m-d', $expiry_date);
+    $end_date = DateTime::createFromFormat('Y-m-d H:i:s', $expiry_date);
     $end_date->setTime(23,59);
     $diff = $now->diff($end_date);
 
@@ -41,3 +41,13 @@ function is_hours_equals_zero($hours) : string
     return (intval($hours) === 0) ? 'timer--finishing' : '';
 }
 
+function select_from_db($con, $sql) : array
+{
+    $res = mysqli_query($con, $sql);
+
+    if ($res) {
+        return mysqli_fetch_all($res, MYSQLI_ASSOC);
+    }
+
+    return [];
+}
