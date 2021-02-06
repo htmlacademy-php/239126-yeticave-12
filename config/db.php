@@ -2,6 +2,6 @@
 return [
     'host' => 'localhost',
     'user' => 'root',
-    'password' => 'pass',
+    'password' => '',
     'database' => 'shema'
 ];

@@ -15,8 +15,12 @@ require_once('functions.php');
 require_once('helpers.php');
 require_once('init_db.php');
 
+if (mysqli_connect_error()) {
+    die('На сайте технические проблемы, попробуйте зайти позже');
+}
+
 $categories = select_from_db($con, $categories_sql_query);
-$promos_list = select_from_db($con, sprintf($promos_list_sql_query, '2021-02-10'));
+$promos_list = select_from_db($con, $promos_list_sql_query);
 
 $main_content = include_template('main.php', ['promos_list' => $promos_list, 'categories' => $categories]);
 $header_content = include_template('header.php', ['is_auth' => $is_auth, 'user_name' => $user_name]);
