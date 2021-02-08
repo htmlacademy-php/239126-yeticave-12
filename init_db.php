@@ -8,18 +8,25 @@ $categories_sql_query = "SELECT * FROM category";
 $promos_list_sql_query = "
 SELECT
 	lot.name,
-	lot.starter_price as price,
-	lot.img_src as url,
-	category.name as category,
-	lot.expiration_date as expiry_date
+	IFNULL(bets.price, lot.starter_price) AS price,
+	lot.img_src AS url,
+	category.name AS category,
+	lot.expiration_date AS expiry_date
 FROM
 	lot
-LEFT OUTER JOIN bet ON
-	bet.lot_id = lot.id
-JOIN category ON
+LEFT JOIN (
+	SELECT
+		lot_id,
+		MAX(price) AS price
+	FROM
+		bet
+	GROUP BY
+		lot_id) AS bets ON
+	bets.lot_id = lot.id
+LEFT JOIN category ON
 	lot.category_id = category.id
 WHERE
-	lot.winner_id is NULL
+	lot.winner_id IS NULL
 ORDER BY
 	lot.date_creation DESC
 LIMIT 9";
